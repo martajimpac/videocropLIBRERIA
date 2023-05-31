@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">isquadSportWear</string>
+    <string name="default_title">Titulo por defecto</string>
+    <string name="default_desc">Descripcion por defecto.</string>
+
+
+    <!--Alerts-->
+    <string name="recorte">Recorte</string>
+    <string name="recorte_desc">Se va a recortar el video de %s a %s. ¿Que desea hacer?</string>
+
+    <string name="recorte_guardar">Guardar video</string>
+    <string name="recorte_ver">Ver video</string>
+    <string name="recorte_cancelar">Cancelar</string>
+
+    <string name="recorte_error">No se ha podido recortar el video</string>
+
+    <string name="recorte_titulo">Video recortado</string>
+
+</resources>
