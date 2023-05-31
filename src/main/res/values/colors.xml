@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="defaultTextColor">#FFFFFF</color>
+    <color name="baseColor">#000000</color>
+    <color name="iconColor">#FFFFFF</color>
+    <color name="iconBackgroundColor">#3F51B5</color>
+
+</resources>
