@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.ClippingMediaSource
@@ -29,13 +30,9 @@ class VideoCropHelper {
     var descriptionFont: Typeface? = null
     var buttonFont: Typeface? = null
 
-    var exoplayerFont: Typeface? = null
-    var iconPlay: Int? = null
-    var iconPause: Int? = null
 
     fun initDefaultValues(imgDefault : Int, backgroundColor : Int, iconThinColor : Int?, iconBackgroundColor : Int, textColor : Int, buttonColor : Int,
-                          titleFont: Typeface? = null, descriptionFont: Typeface? = null, buttonFont: Typeface? = null, buttonTextColor : Int? = null,
-                          exoplayerFont: Typeface? = null, iconPlay : Int, iconPause: Int){
+                          titleFont: Typeface? = null, descriptionFont: Typeface? = null, buttonFont: Typeface? = null, buttonTextColor : Int? = null){
         this.imgDefault = imgDefault
         this.backgroundColor = backgroundColor
         this.iconThinColor = iconThinColor
@@ -48,10 +45,6 @@ class VideoCropHelper {
         this.buttonFont = buttonFont
         this.buttonTextColor = buttonTextColor
 
-        //exoplayer
-        this.exoplayerFont = exoplayerFont
-        this.iconPlay = iconPlay
-        this.iconPause = iconPause
     }
 
     //view = binding.root
@@ -103,7 +96,7 @@ class VideoCropHelper {
     }
 
     fun relaeseRecortePlayer(){
-        //recortePlayer?.release() TODO: terminar esta funcion para poder liberar recortePlayer
+        DialogVideoFragment.getInstance().releasePlayer()
     }
 
     private fun formatPosition(position : Long) : String {
@@ -123,7 +116,7 @@ class VideoCropHelper {
     }
 
     fun showVideoAlert(activity: AppCompatActivity, title: Any? = null, clippingMediaSource: ClippingMediaSource, recortePlayer: ExoPlayer, player: Player, button1: Any, button2: Any?) {
-        val dialog = DialogVideoFragment(backgroundColor, textColor, buttonColor, titleFont, buttonFont, buttonTextColor, exoplayerFont, iconPlay, iconPause)
+        val dialog = DialogVideoFragment(backgroundColor, textColor, buttonColor, titleFont, buttonFont, buttonTextColor)
         dialog.showVideo(title = title,clippingMediaSource = clippingMediaSource,recortePlayer = recortePlayer, player = player, button1 = button1, button2 = button2)
         dialog.show(activity.supportFragmentManager, "VideoAlert")
     }

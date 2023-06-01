@@ -28,8 +28,7 @@ import com.toools.videocrop.databinding.VideocropDialogVideoBinding
  */
 class DialogVideoFragment (private val  backgroundColor : Int?, private val textColor : Int?,
                            private val buttonColor : Int?, private val titleFont: Typeface?,
-                           private val buttonFont: Typeface?, private val buttonTextColor: Int?,
-                           private val exoplayerFont: Typeface?, private val iconPlay: Int?, private val iconPause: Int?): DialogFragment() {
+                           private val buttonFont: Typeface?, private val buttonTextColor: Int?): DialogFragment() {
 
     private var act: Activity? = null
     private lateinit var binding: VideocropDialogVideoBinding
@@ -131,17 +130,6 @@ class DialogVideoFragment (private val  backgroundColor : Int?, private val text
                     twoButtonCancelTextView.text = context.getString(it)
                 }
 
-                //personalizar exoplayercontrol
-                Glide.with(context.baseContext).load(iconPlay).into(videocropPlayerControl.exoPlay)
-                Glide.with(context.baseContext).load(iconPause).into(videocropPlayerControl.exoPause)
-
-                exoplayerFont?.let{
-                    videocropPlayerControl.exoPosition.typeface = exoplayerFont
-                    videocropPlayerControl.textView.typeface = exoplayerFont
-                    videocropPlayerControl.exoDuration.typeface = exoplayerFont
-                    videocropPlayerControl.exoTextSpeed.typeface = exoplayerFont
-                }
-                videocropPlayerControl.exoPosition.text = "Probandoooooooooooooo"
 
                 //reproducir el video
                 recorteSurfaceView.onResume()
@@ -202,13 +190,25 @@ class DialogVideoFragment (private val  backgroundColor : Int?, private val text
         }
     }
 
-    fun loadData(title: Any? = null, clippingMediaSource: ClippingMediaSource,recortePlayer : ExoPlayer, player : Player,  button1: Any, completion1: (() -> Unit)? = null, button2: Any? = null, completion2: (() -> Unit)? = null) {
+    fun loadData(title: Any? = null, clippingMediaSource: ClippingMediaSource,recortePlayer : ExoPlayer, player : Player,  button1: Any, button2: Any? = null) {
         this.title = title
         this.player = player
         this.recortePlayer = recortePlayer
         this.clippingMediaSource = clippingMediaSource
         this.button1 = button1
         this.button2 = button2
+    }
+    fun releasePlayer(){
+        binding.recorteSurfaceView.onPause()
+        binding.recortePlayerView.player = null
+        recortePlayer?.release()
+    }
+
+    companion object {
+        lateinit var dialog: DialogVideoFragment
+        fun getInstance(): DialogVideoFragment {
+            return dialog
+        }
     }
 
 }

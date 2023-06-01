@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        jcenter()
+    }
+}
+
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
@@ -37,7 +46,7 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.activity:activity-compose:1.7.1'
+    implementation 'androidx.activity:activity-compose:1.7.2'
     implementation platform('androidx.compose:compose-bom:2022.10.00')
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
@@ -62,17 +71,18 @@ dependencies {
     implementation("com.otaliastudios:zoomlayout:1.9.0")
 
     //Exoplayer
-    implementation "com.google.android.exoplayer:exoplayer-core:2.18.6"
-    implementation "com.google.android.exoplayer:exoplayer-ui:2.18.6"
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.6'
-    implementation "com.google.android.exoplayer:extension-mediasession:2.18.6"
-    implementation "com.google.android.exoplayer:extension-leanback:2.18.6"
-    implementation 'com.google.android.exoplayer:extension-cast:2.18.6'
-    implementation 'com.google.android.exoplayer:extension-ima:2.18.6'
+    implementation "com.google.android.exoplayer:exoplayer-core:2.18.7"
+    implementation "com.google.android.exoplayer:exoplayer-ui:2.18.7"
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.7'
+    implementation "com.google.android.exoplayer:extension-mediasession:2.18.7"
+    implementation "com.google.android.exoplayer:extension-leanback:2.18.7"
+    implementation 'com.google.android.exoplayer:extension-cast:2.18.7'
+    implementation 'com.google.android.exoplayer:extension-ima:2.18.7'
     implementation "com.google.android.gms:play-services-cast-framework:21.3.0"
     implementation "androidx.mediarouter:mediarouter:1.4.0"
 
     //Toasty
     implementation 'com.github.GrenderG:Toasty:1.5.2'
+
     implementation 'com.github.addisonelliott:SegmentedButton:3.1.9'
 }
